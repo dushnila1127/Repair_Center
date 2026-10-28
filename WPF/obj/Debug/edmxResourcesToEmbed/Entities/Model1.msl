@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище user24_dbModelContainer" CdmEntityContainer="user24_dbEntities1">
+    <EntitySetMapping Name="Course_project_0502_Clients">
+      <EntityTypeMapping TypeName="user24_dbModel.Course_project_0502_Clients">
+        <MappingFragment StoreEntitySet="Course_project_0502_Clients">
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Course_project_0502_Employees">
+      <EntityTypeMapping TypeName="user24_dbModel.Course_project_0502_Employees">
+        <MappingFragment StoreEntitySet="Course_project_0502_Employees">
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Course_project_0502_Equipment">
+      <EntityTypeMapping TypeName="user24_dbModel.Course_project_0502_Equipment">
+        <MappingFragment StoreEntitySet="Course_project_0502_Equipment">
+          <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="EquipmentModelID" ColumnName="EquipmentModelID" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Course_project_0502_EquipmentBrands">
+      <EntityTypeMapping TypeName="user24_dbModel.Course_project_0502_EquipmentBrands">
+        <MappingFragment StoreEntitySet="Course_project_0502_EquipmentBrands">
+          <ScalarProperty Name="EquipmentBrandID" ColumnName="EquipmentBrandID" />
+          <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Course_project_0502_EquipmentModels">
+      <EntityTypeMapping TypeName="user24_dbModel.Course_project_0502_EquipmentModels">
+        <MappingFragment StoreEntitySet="Course_project_0502_EquipmentModels">
+          <ScalarProperty Name="EquipmentModelID" ColumnName="EquipmentModelID" />
+          <ScalarProperty Name="EquipmentBrandID" ColumnName="EquipmentBrandID" />
+          <ScalarProperty Name="EquipmentTypeID" ColumnName="EquipmentTypeID" />
+          <ScalarProperty Name="ModelName" ColumnName="ModelName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Course_project_0502_EquipmentTypes">
+      <EntityTypeMapping TypeName="user24_dbModel.Course_project_0502_EquipmentTypes">
+        <MappingFragment StoreEntitySet="Course_project_0502_EquipmentTypes">
+          <ScalarProperty Name="EquipmentTypeID" ColumnName="EquipmentTypeID" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Course_project_0502_OrderAssignments">
+      <EntityTypeMapping TypeName="user24_dbModel.Course_project_0502_OrderAssignments">
+        <MappingFragment StoreEntitySet="Course_project_0502_OrderAssignments">
+          <ScalarProperty Name="RepairOrderID" ColumnName="RepairOrderID" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="AssignedAt" ColumnName="AssignedAt" />
+          <ScalarProperty Name="AssignmentNote" ColumnName="AssignmentNote" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Course_project_0502_OrderStatuses">
+      <EntityTypeMapping TypeName="user24_dbModel.Course_project_0502_OrderStatuses">
+        <MappingFragment StoreEntitySet="Course_project_0502_OrderStatuses">
+          <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="IsFinal" ColumnName="IsFinal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Course_project_0502_OrderWorks">
+      <EntityTypeMapping TypeName="user24_dbModel.Course_project_0502_OrderWorks">
+        <MappingFragment StoreEntitySet="Course_project_0502_OrderWorks">
+          <ScalarProperty Name="OrderWorkID" ColumnName="OrderWorkID" />
+          <ScalarProperty Name="RepairOrderID" ColumnName="RepairOrderID" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="WorkName" ColumnName="WorkName" />
+          <ScalarProperty Name="WorkDescription" ColumnName="WorkDescription" />
+          <ScalarProperty Name="WorkCost" ColumnName="WorkCost" />
+          <ScalarProperty Name="DurationMinutes" ColumnName="DurationMinutes" />
+          <ScalarProperty Name="CompletedAt" ColumnName="CompletedAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Course_project_0502_RepairOrders">
+      <EntityTypeMapping TypeName="user24_dbModel.Course_project_0502_RepairOrders">
+        <MappingFragment StoreEntitySet="Course_project_0502_RepairOrders">
+          <ScalarProperty Name="RepairOrderID" ColumnName="RepairOrderID" />
+          <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+          <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
+          <ScalarProperty Name="AcceptedAt" ColumnName="AcceptedAt" />
+          <ScalarProperty Name="IssuedAt" ColumnName="IssuedAt" />
+          <ScalarProperty Name="FaultDescription" ColumnName="FaultDescription" />
+          <ScalarProperty Name="RepairCost" ColumnName="RepairCost" />
+          <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
+          <ScalarProperty Name="IsCancelled" ColumnName="IsCancelled" />
+          <ScalarProperty Name="CancellationNote" ColumnName="CancellationNote" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Course_project_0502_RepairOrderStatusHistory">
+      <EntityTypeMapping TypeName="user24_dbModel.Course_project_0502_RepairOrderStatusHistory">
+        <MappingFragment StoreEntitySet="Course_project_0502_RepairOrderStatusHistory">
+          <ScalarProperty Name="StatusHistoryID" ColumnName="StatusHistoryID" />
+          <ScalarProperty Name="RepairOrderID" ColumnName="RepairOrderID" />
+          <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
+          <ScalarProperty Name="ChangedAt" ColumnName="ChangedAt" />
+          <ScalarProperty Name="ChangedByUserID" ColumnName="ChangedByUserID" />
+          <ScalarProperty Name="ChangeNote" ColumnName="ChangeNote" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Course_project_0502_Roles">
+      <EntityTypeMapping TypeName="user24_dbModel.Course_project_0502_Roles">
+        <MappingFragment StoreEntitySet="Course_project_0502_Roles">
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="RoleDescription" ColumnName="RoleDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Course_project_0502_Specializations">
+      <EntityTypeMapping TypeName="user24_dbModel.Course_project_0502_Specializations">
+        <MappingFragment StoreEntitySet="Course_project_0502_Specializations">
+          <ScalarProperty Name="SpecializationID" ColumnName="SpecializationID" />
+          <ScalarProperty Name="SpecializationName" ColumnName="SpecializationName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Course_project_0502_Users">
+      <EntityTypeMapping TypeName="user24_dbModel.Course_project_0502_Users">
+        <MappingFragment StoreEntitySet="Course_project_0502_Users">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Course_project_0502_EmployeeSpecializations" TypeName="user24_dbModel.Course_project_0502_EmployeeSpecializations" StoreEntitySet="Course_project_0502_EmployeeSpecializations">
+      <EndProperty Name="Course_project_0502_Employees">
+        <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+      </EndProperty>
+      <EndProperty Name="Course_project_0502_Specializations">
+        <ScalarProperty Name="SpecializationID" ColumnName="SpecializationID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Course_project_0502_UserRoles" TypeName="user24_dbModel.Course_project_0502_UserRoles" StoreEntitySet="Course_project_0502_UserRoles">
+      <EndProperty Name="Course_project_0502_Roles">
+        <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+      </EndProperty>
+      <EndProperty Name="Course_project_0502_Users">
+        <ScalarProperty Name="UserID" ColumnName="UserID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

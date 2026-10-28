@@ -1,0 +1,1 @@
+Модель ADO.NET Entity Data Model хранится в Model1.edmx. Контекст Entity Framework: user24_dbEntities1. Классы сущностей и контекст соответствуют структуре таблиц Course_project_0502_* в SQL-скрипте проекта.

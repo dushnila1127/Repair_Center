@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ 
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    
+    <edmx:Diagrams>
+      <Diagram DiagramId="971a5f5648164543823b506e42a5205f" Name="Diagram1">
+        <EntityTypeShape EntityType="user24_dbModel.Course_project_0502_Clients" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="user24_dbModel.Course_project_0502_Employees" Width="1.5" PointX="3.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="user24_dbModel.Course_project_0502_Equipment" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="user24_dbModel.Course_project_0502_EquipmentBrands" Width="1.5" PointX="1.5" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="user24_dbModel.Course_project_0502_EquipmentModels" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="user24_dbModel.Course_project_0502_EquipmentTypes" Width="1.5" PointX="1.5" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="user24_dbModel.Course_project_0502_OrderAssignments" Width="1.5" PointX="10.5" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="user24_dbModel.Course_project_0502_OrderStatuses" Width="1.5" PointX="6" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="user24_dbModel.Course_project_0502_OrderWorks" Width="1.5" PointX="13.5" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="user24_dbModel.Course_project_0502_RepairOrders" Width="1.5" PointX="8.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="user24_dbModel.Course_project_0502_RepairOrderStatusHistory" Width="1.5" PointX="10.5" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="user24_dbModel.Course_project_0502_Roles" Width="1.5" PointX="3.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="user24_dbModel.Course_project_0502_Specializations" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="user24_dbModel.Course_project_0502_Users" Width="1.5" PointX="6" PointY="7.25" IsExpanded="true" />
+        <AssociationConnector Association="user24_dbModel.FK_Course_project_0502_Equipment_Clients" ManuallyRouted="false" />
+        <AssociationConnector Association="user24_dbModel.FK_Course_project_0502_Users_Clients" ManuallyRouted="false" />
+        <AssociationConnector Association="user24_dbModel.FK_Course_project_0502_OrderAssignments_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="user24_dbModel.FK_Course_project_0502_OrderWorks_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="user24_dbModel.FK_Course_project_0502_Users_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="user24_dbModel.FK_Course_project_0502_Equipment_Models" ManuallyRouted="false" />
+        <AssociationConnector Association="user24_dbModel.FK_Course_project_0502_RepairOrders_Equipment" ManuallyRouted="false" />
+        <AssociationConnector Association="user24_dbModel.FK_Course_project_0502_EquipmentModels_Brands" ManuallyRouted="false" />
+        <AssociationConnector Association="user24_dbModel.FK_Course_project_0502_EquipmentModels_Types" ManuallyRouted="false" />
+        <AssociationConnector Association="user24_dbModel.FK_Course_project_0502_OrderAssignments_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="user24_dbModel.FK_Course_project_0502_RepairOrders_Statuses" ManuallyRouted="false" />
+        <AssociationConnector Association="user24_dbModel.FK_Course_project_0502_StatusHistory_Statuses" ManuallyRouted="false" />
+        <AssociationConnector Association="user24_dbModel.FK_Course_project_0502_OrderWorks_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="user24_dbModel.FK_Course_project_0502_StatusHistory_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="user24_dbModel.FK_Course_project_0502_StatusHistory_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="user24_dbModel.Course_project_0502_EmployeeSpecializations" ManuallyRouted="false" />
+        <AssociationConnector Association="user24_dbModel.Course_project_0502_UserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

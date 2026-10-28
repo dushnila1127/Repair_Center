@@ -1,0 +1,1123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  
+  <edmx:Runtime>
+    
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище user24_dbModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Course_project_0502_Clients">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Course_project_0502_Employees">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Course_project_0502_EmployeeSpecializations">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+            <PropertyRef Name="SpecializationID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="SpecializationID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Course_project_0502_Equipment">
+          <Key>
+            <PropertyRef Name="EquipmentID" />
+          </Key>
+          <Property Name="EquipmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientID" Type="int" Nullable="false" />
+          <Property Name="EquipmentModelID" Type="int" Nullable="false" />
+          <Property Name="SerialNumber" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="Course_project_0502_EquipmentBrands">
+          <Key>
+            <PropertyRef Name="EquipmentBrandID" />
+          </Key>
+          <Property Name="EquipmentBrandID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrandName" Type="nvarchar" MaxLength="80" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Course_project_0502_EquipmentModels">
+          <Key>
+            <PropertyRef Name="EquipmentModelID" />
+          </Key>
+          <Property Name="EquipmentModelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EquipmentBrandID" Type="int" Nullable="false" />
+          <Property Name="EquipmentTypeID" Type="int" Nullable="false" />
+          <Property Name="ModelName" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Course_project_0502_EquipmentTypes">
+          <Key>
+            <PropertyRef Name="EquipmentTypeID" />
+          </Key>
+          <Property Name="EquipmentTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar" MaxLength="80" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Course_project_0502_OrderAssignments">
+          <Key>
+            <PropertyRef Name="RepairOrderID" />
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="RepairOrderID" Type="int" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="AssignedAt" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="AssignmentNote" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Course_project_0502_OrderStatuses">
+          <Key>
+            <PropertyRef Name="OrderStatusID" />
+          </Key>
+          <Property Name="OrderStatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusName" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="IsFinal" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Course_project_0502_OrderWorks">
+          <Key>
+            <PropertyRef Name="OrderWorkID" />
+          </Key>
+          <Property Name="OrderWorkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RepairOrderID" Type="int" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="WorkName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="WorkDescription" Type="nvarchar" MaxLength="500" />
+          <Property Name="WorkCost" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="DurationMinutes" Type="smallint" Nullable="false" />
+          <Property Name="CompletedAt" Type="date" />
+        </EntityType>
+        <EntityType Name="Course_project_0502_RepairOrders">
+          <Key>
+            <PropertyRef Name="RepairOrderID" />
+          </Key>
+          <Property Name="RepairOrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="EquipmentID" Type="int" Nullable="false" />
+          <Property Name="AcceptedAt" Type="date" Nullable="false" />
+          <Property Name="IssuedAt" Type="date" />
+          <Property Name="FaultDescription" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="RepairCost" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="OrderStatusID" Type="int" Nullable="false" />
+          <Property Name="IsCancelled" Type="bit" Nullable="false" />
+          <Property Name="CancellationNote" Type="nvarchar" MaxLength="250" />
+          <Property Name="CreatedAt" Type="datetime2" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Course_project_0502_RepairOrderStatusHistory">
+          <Key>
+            <PropertyRef Name="StatusHistoryID" />
+          </Key>
+          <Property Name="StatusHistoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RepairOrderID" Type="int" Nullable="false" />
+          <Property Name="OrderStatusID" Type="int" Nullable="false" />
+          <Property Name="ChangedAt" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="ChangedByUserID" Type="int" />
+          <Property Name="ChangeNote" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Course_project_0502_Roles">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="RoleDescription" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Course_project_0502_Specializations">
+          <Key>
+            <PropertyRef Name="SpecializationID" />
+          </Key>
+          <Property Name="SpecializationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SpecializationName" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Course_project_0502_UserRoles">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Course_project_0502_Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoginName" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="AccountType" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" />
+          <Property Name="ClientID" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Course_project_0502_EmployeeSpecializations_Employees">
+          <End Role="Course_project_0502_Employees" Type="Self.Course_project_0502_Employees" Multiplicity="1" />
+          <End Role="Course_project_0502_EmployeeSpecializations" Type="Self.Course_project_0502_EmployeeSpecializations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_project_0502_Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Course_project_0502_EmployeeSpecializations">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_project_0502_EmployeeSpecializations_Specializations">
+          <End Role="Course_project_0502_Specializations" Type="Self.Course_project_0502_Specializations" Multiplicity="1" />
+          <End Role="Course_project_0502_EmployeeSpecializations" Type="Self.Course_project_0502_EmployeeSpecializations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_project_0502_Specializations">
+              <PropertyRef Name="SpecializationID" />
+            </Principal>
+            <Dependent Role="Course_project_0502_EmployeeSpecializations">
+              <PropertyRef Name="SpecializationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_project_0502_Equipment_Clients">
+          <End Role="Course_project_0502_Clients" Type="Self.Course_project_0502_Clients" Multiplicity="1" />
+          <End Role="Course_project_0502_Equipment" Type="Self.Course_project_0502_Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_project_0502_Clients">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="Course_project_0502_Equipment">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_project_0502_Equipment_Models">
+          <End Role="Course_project_0502_EquipmentModels" Type="Self.Course_project_0502_EquipmentModels" Multiplicity="1" />
+          <End Role="Course_project_0502_Equipment" Type="Self.Course_project_0502_Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_project_0502_EquipmentModels">
+              <PropertyRef Name="EquipmentModelID" />
+            </Principal>
+            <Dependent Role="Course_project_0502_Equipment">
+              <PropertyRef Name="EquipmentModelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_project_0502_EquipmentModels_Brands">
+          <End Role="Course_project_0502_EquipmentBrands" Type="Self.Course_project_0502_EquipmentBrands" Multiplicity="1" />
+          <End Role="Course_project_0502_EquipmentModels" Type="Self.Course_project_0502_EquipmentModels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_project_0502_EquipmentBrands">
+              <PropertyRef Name="EquipmentBrandID" />
+            </Principal>
+            <Dependent Role="Course_project_0502_EquipmentModels">
+              <PropertyRef Name="EquipmentBrandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_project_0502_EquipmentModels_Types">
+          <End Role="Course_project_0502_EquipmentTypes" Type="Self.Course_project_0502_EquipmentTypes" Multiplicity="1" />
+          <End Role="Course_project_0502_EquipmentModels" Type="Self.Course_project_0502_EquipmentModels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_project_0502_EquipmentTypes">
+              <PropertyRef Name="EquipmentTypeID" />
+            </Principal>
+            <Dependent Role="Course_project_0502_EquipmentModels">
+              <PropertyRef Name="EquipmentTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_project_0502_OrderAssignments_Employees">
+          <End Role="Course_project_0502_Employees" Type="Self.Course_project_0502_Employees" Multiplicity="1" />
+          <End Role="Course_project_0502_OrderAssignments" Type="Self.Course_project_0502_OrderAssignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_project_0502_Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Course_project_0502_OrderAssignments">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_project_0502_OrderAssignments_Orders">
+          <End Role="Course_project_0502_RepairOrders" Type="Self.Course_project_0502_RepairOrders" Multiplicity="1" />
+          <End Role="Course_project_0502_OrderAssignments" Type="Self.Course_project_0502_OrderAssignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_project_0502_RepairOrders">
+              <PropertyRef Name="RepairOrderID" />
+            </Principal>
+            <Dependent Role="Course_project_0502_OrderAssignments">
+              <PropertyRef Name="RepairOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_project_0502_OrderWorks_Employees">
+          <End Role="Course_project_0502_Employees" Type="Self.Course_project_0502_Employees" Multiplicity="1" />
+          <End Role="Course_project_0502_OrderWorks" Type="Self.Course_project_0502_OrderWorks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_project_0502_Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Course_project_0502_OrderWorks">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_project_0502_OrderWorks_Orders">
+          <End Role="Course_project_0502_RepairOrders" Type="Self.Course_project_0502_RepairOrders" Multiplicity="1" />
+          <End Role="Course_project_0502_OrderWorks" Type="Self.Course_project_0502_OrderWorks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_project_0502_RepairOrders">
+              <PropertyRef Name="RepairOrderID" />
+            </Principal>
+            <Dependent Role="Course_project_0502_OrderWorks">
+              <PropertyRef Name="RepairOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_project_0502_RepairOrders_Equipment">
+          <End Role="Course_project_0502_Equipment" Type="Self.Course_project_0502_Equipment" Multiplicity="1" />
+          <End Role="Course_project_0502_RepairOrders" Type="Self.Course_project_0502_RepairOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_project_0502_Equipment">
+              <PropertyRef Name="EquipmentID" />
+            </Principal>
+            <Dependent Role="Course_project_0502_RepairOrders">
+              <PropertyRef Name="EquipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_project_0502_RepairOrders_Statuses">
+          <End Role="Course_project_0502_OrderStatuses" Type="Self.Course_project_0502_OrderStatuses" Multiplicity="1" />
+          <End Role="Course_project_0502_RepairOrders" Type="Self.Course_project_0502_RepairOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_project_0502_OrderStatuses">
+              <PropertyRef Name="OrderStatusID" />
+            </Principal>
+            <Dependent Role="Course_project_0502_RepairOrders">
+              <PropertyRef Name="OrderStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_project_0502_StatusHistory_Orders">
+          <End Role="Course_project_0502_RepairOrders" Type="Self.Course_project_0502_RepairOrders" Multiplicity="1" />
+          <End Role="Course_project_0502_RepairOrderStatusHistory" Type="Self.Course_project_0502_RepairOrderStatusHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_project_0502_RepairOrders">
+              <PropertyRef Name="RepairOrderID" />
+            </Principal>
+            <Dependent Role="Course_project_0502_RepairOrderStatusHistory">
+              <PropertyRef Name="RepairOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_project_0502_StatusHistory_Statuses">
+          <End Role="Course_project_0502_OrderStatuses" Type="Self.Course_project_0502_OrderStatuses" Multiplicity="1" />
+          <End Role="Course_project_0502_RepairOrderStatusHistory" Type="Self.Course_project_0502_RepairOrderStatusHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_project_0502_OrderStatuses">
+              <PropertyRef Name="OrderStatusID" />
+            </Principal>
+            <Dependent Role="Course_project_0502_RepairOrderStatusHistory">
+              <PropertyRef Name="OrderStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_project_0502_StatusHistory_Users">
+          <End Role="Course_project_0502_Users" Type="Self.Course_project_0502_Users" Multiplicity="0..1" />
+          <End Role="Course_project_0502_RepairOrderStatusHistory" Type="Self.Course_project_0502_RepairOrderStatusHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_project_0502_Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Course_project_0502_RepairOrderStatusHistory">
+              <PropertyRef Name="ChangedByUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_project_0502_UserRoles_Roles">
+          <End Role="Course_project_0502_Roles" Type="Self.Course_project_0502_Roles" Multiplicity="1" />
+          <End Role="Course_project_0502_UserRoles" Type="Self.Course_project_0502_UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_project_0502_Roles">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="Course_project_0502_UserRoles">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_project_0502_UserRoles_Users">
+          <End Role="Course_project_0502_Users" Type="Self.Course_project_0502_Users" Multiplicity="1" />
+          <End Role="Course_project_0502_UserRoles" Type="Self.Course_project_0502_UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_project_0502_Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Course_project_0502_UserRoles">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_project_0502_Users_Clients">
+          <End Role="Course_project_0502_Clients" Type="Self.Course_project_0502_Clients" Multiplicity="0..1" />
+          <End Role="Course_project_0502_Users" Type="Self.Course_project_0502_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_project_0502_Clients">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="Course_project_0502_Users">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_project_0502_Users_Employees">
+          <End Role="Course_project_0502_Employees" Type="Self.Course_project_0502_Employees" Multiplicity="0..1" />
+          <End Role="Course_project_0502_Users" Type="Self.Course_project_0502_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_project_0502_Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Course_project_0502_Users">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище user24_dbModelContainer">
+          <EntitySet Name="Course_project_0502_Clients" EntityType="Self.Course_project_0502_Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Course_project_0502_Employees" EntityType="Self.Course_project_0502_Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Course_project_0502_EmployeeSpecializations" EntityType="Self.Course_project_0502_EmployeeSpecializations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Course_project_0502_Equipment" EntityType="Self.Course_project_0502_Equipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Course_project_0502_EquipmentBrands" EntityType="Self.Course_project_0502_EquipmentBrands" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Course_project_0502_EquipmentModels" EntityType="Self.Course_project_0502_EquipmentModels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Course_project_0502_EquipmentTypes" EntityType="Self.Course_project_0502_EquipmentTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Course_project_0502_OrderAssignments" EntityType="Self.Course_project_0502_OrderAssignments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Course_project_0502_OrderStatuses" EntityType="Self.Course_project_0502_OrderStatuses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Course_project_0502_OrderWorks" EntityType="Self.Course_project_0502_OrderWorks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Course_project_0502_RepairOrders" EntityType="Self.Course_project_0502_RepairOrders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Course_project_0502_RepairOrderStatusHistory" EntityType="Self.Course_project_0502_RepairOrderStatusHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Course_project_0502_Roles" EntityType="Self.Course_project_0502_Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Course_project_0502_Specializations" EntityType="Self.Course_project_0502_Specializations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Course_project_0502_UserRoles" EntityType="Self.Course_project_0502_UserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Course_project_0502_Users" EntityType="Self.Course_project_0502_Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Course_project_0502_EmployeeSpecializations_Employees" Association="Self.FK_Course_project_0502_EmployeeSpecializations_Employees">
+            <End Role="Course_project_0502_Employees" EntitySet="Course_project_0502_Employees" />
+            <End Role="Course_project_0502_EmployeeSpecializations" EntitySet="Course_project_0502_EmployeeSpecializations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_project_0502_EmployeeSpecializations_Specializations" Association="Self.FK_Course_project_0502_EmployeeSpecializations_Specializations">
+            <End Role="Course_project_0502_Specializations" EntitySet="Course_project_0502_Specializations" />
+            <End Role="Course_project_0502_EmployeeSpecializations" EntitySet="Course_project_0502_EmployeeSpecializations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_project_0502_Equipment_Clients" Association="Self.FK_Course_project_0502_Equipment_Clients">
+            <End Role="Course_project_0502_Clients" EntitySet="Course_project_0502_Clients" />
+            <End Role="Course_project_0502_Equipment" EntitySet="Course_project_0502_Equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_project_0502_Equipment_Models" Association="Self.FK_Course_project_0502_Equipment_Models">
+            <End Role="Course_project_0502_EquipmentModels" EntitySet="Course_project_0502_EquipmentModels" />
+            <End Role="Course_project_0502_Equipment" EntitySet="Course_project_0502_Equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_project_0502_EquipmentModels_Brands" Association="Self.FK_Course_project_0502_EquipmentModels_Brands">
+            <End Role="Course_project_0502_EquipmentBrands" EntitySet="Course_project_0502_EquipmentBrands" />
+            <End Role="Course_project_0502_EquipmentModels" EntitySet="Course_project_0502_EquipmentModels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_project_0502_EquipmentModels_Types" Association="Self.FK_Course_project_0502_EquipmentModels_Types">
+            <End Role="Course_project_0502_EquipmentTypes" EntitySet="Course_project_0502_EquipmentTypes" />
+            <End Role="Course_project_0502_EquipmentModels" EntitySet="Course_project_0502_EquipmentModels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_project_0502_OrderAssignments_Employees" Association="Self.FK_Course_project_0502_OrderAssignments_Employees">
+            <End Role="Course_project_0502_Employees" EntitySet="Course_project_0502_Employees" />
+            <End Role="Course_project_0502_OrderAssignments" EntitySet="Course_project_0502_OrderAssignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_project_0502_OrderAssignments_Orders" Association="Self.FK_Course_project_0502_OrderAssignments_Orders">
+            <End Role="Course_project_0502_RepairOrders" EntitySet="Course_project_0502_RepairOrders" />
+            <End Role="Course_project_0502_OrderAssignments" EntitySet="Course_project_0502_OrderAssignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_project_0502_OrderWorks_Employees" Association="Self.FK_Course_project_0502_OrderWorks_Employees">
+            <End Role="Course_project_0502_Employees" EntitySet="Course_project_0502_Employees" />
+            <End Role="Course_project_0502_OrderWorks" EntitySet="Course_project_0502_OrderWorks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_project_0502_OrderWorks_Orders" Association="Self.FK_Course_project_0502_OrderWorks_Orders">
+            <End Role="Course_project_0502_RepairOrders" EntitySet="Course_project_0502_RepairOrders" />
+            <End Role="Course_project_0502_OrderWorks" EntitySet="Course_project_0502_OrderWorks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_project_0502_RepairOrders_Equipment" Association="Self.FK_Course_project_0502_RepairOrders_Equipment">
+            <End Role="Course_project_0502_Equipment" EntitySet="Course_project_0502_Equipment" />
+            <End Role="Course_project_0502_RepairOrders" EntitySet="Course_project_0502_RepairOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_project_0502_RepairOrders_Statuses" Association="Self.FK_Course_project_0502_RepairOrders_Statuses">
+            <End Role="Course_project_0502_OrderStatuses" EntitySet="Course_project_0502_OrderStatuses" />
+            <End Role="Course_project_0502_RepairOrders" EntitySet="Course_project_0502_RepairOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_project_0502_StatusHistory_Orders" Association="Self.FK_Course_project_0502_StatusHistory_Orders">
+            <End Role="Course_project_0502_RepairOrders" EntitySet="Course_project_0502_RepairOrders" />
+            <End Role="Course_project_0502_RepairOrderStatusHistory" EntitySet="Course_project_0502_RepairOrderStatusHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_project_0502_StatusHistory_Statuses" Association="Self.FK_Course_project_0502_StatusHistory_Statuses">
+            <End Role="Course_project_0502_OrderStatuses" EntitySet="Course_project_0502_OrderStatuses" />
+            <End Role="Course_project_0502_RepairOrderStatusHistory" EntitySet="Course_project_0502_RepairOrderStatusHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_project_0502_StatusHistory_Users" Association="Self.FK_Course_project_0502_StatusHistory_Users">
+            <End Role="Course_project_0502_Users" EntitySet="Course_project_0502_Users" />
+            <End Role="Course_project_0502_RepairOrderStatusHistory" EntitySet="Course_project_0502_RepairOrderStatusHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_project_0502_UserRoles_Roles" Association="Self.FK_Course_project_0502_UserRoles_Roles">
+            <End Role="Course_project_0502_Roles" EntitySet="Course_project_0502_Roles" />
+            <End Role="Course_project_0502_UserRoles" EntitySet="Course_project_0502_UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_project_0502_UserRoles_Users" Association="Self.FK_Course_project_0502_UserRoles_Users">
+            <End Role="Course_project_0502_Users" EntitySet="Course_project_0502_Users" />
+            <End Role="Course_project_0502_UserRoles" EntitySet="Course_project_0502_UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_project_0502_Users_Clients" Association="Self.FK_Course_project_0502_Users_Clients">
+            <End Role="Course_project_0502_Clients" EntitySet="Course_project_0502_Clients" />
+            <End Role="Course_project_0502_Users" EntitySet="Course_project_0502_Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_project_0502_Users_Employees" Association="Self.FK_Course_project_0502_Users_Employees">
+            <End Role="Course_project_0502_Employees" EntitySet="Course_project_0502_Employees" />
+            <End Role="Course_project_0502_Users" EntitySet="Course_project_0502_Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    
+    <edmx:ConceptualModels>
+      <Schema Namespace="user24_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Course_project_0502_Clients">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Course_project_0502_Equipment" Relationship="Self.FK_Course_project_0502_Equipment_Clients" FromRole="Course_project_0502_Clients" ToRole="Course_project_0502_Equipment" />
+          <NavigationProperty Name="Course_project_0502_Users" Relationship="Self.FK_Course_project_0502_Users_Clients" FromRole="Course_project_0502_Clients" ToRole="Course_project_0502_Users" />
+        </EntityType>
+        <EntityType Name="Course_project_0502_Employees">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Course_project_0502_OrderAssignments" Relationship="Self.FK_Course_project_0502_OrderAssignments_Employees" FromRole="Course_project_0502_Employees" ToRole="Course_project_0502_OrderAssignments" />
+          <NavigationProperty Name="Course_project_0502_OrderWorks" Relationship="Self.FK_Course_project_0502_OrderWorks_Employees" FromRole="Course_project_0502_Employees" ToRole="Course_project_0502_OrderWorks" />
+          <NavigationProperty Name="Course_project_0502_Users" Relationship="Self.FK_Course_project_0502_Users_Employees" FromRole="Course_project_0502_Employees" ToRole="Course_project_0502_Users" />
+          <NavigationProperty Name="Course_project_0502_Specializations" Relationship="Self.Course_project_0502_EmployeeSpecializations" FromRole="Course_project_0502_Employees" ToRole="Course_project_0502_Specializations" />
+        </EntityType>
+        <EntityType Name="Course_project_0502_Equipment">
+          <Key>
+            <PropertyRef Name="EquipmentID" />
+          </Key>
+          <Property Name="EquipmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientID" Type="Int32" Nullable="false" />
+          <Property Name="EquipmentModelID" Type="Int32" Nullable="false" />
+          <Property Name="SerialNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Course_project_0502_Clients" Relationship="Self.FK_Course_project_0502_Equipment_Clients" FromRole="Course_project_0502_Equipment" ToRole="Course_project_0502_Clients" />
+          <NavigationProperty Name="Course_project_0502_EquipmentModels" Relationship="Self.FK_Course_project_0502_Equipment_Models" FromRole="Course_project_0502_Equipment" ToRole="Course_project_0502_EquipmentModels" />
+          <NavigationProperty Name="Course_project_0502_RepairOrders" Relationship="Self.FK_Course_project_0502_RepairOrders_Equipment" FromRole="Course_project_0502_Equipment" ToRole="Course_project_0502_RepairOrders" />
+        </EntityType>
+        <EntityType Name="Course_project_0502_EquipmentBrands">
+          <Key>
+            <PropertyRef Name="EquipmentBrandID" />
+          </Key>
+          <Property Name="EquipmentBrandID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrandName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Course_project_0502_EquipmentModels" Relationship="Self.FK_Course_project_0502_EquipmentModels_Brands" FromRole="Course_project_0502_EquipmentBrands" ToRole="Course_project_0502_EquipmentModels" />
+        </EntityType>
+        <EntityType Name="Course_project_0502_EquipmentModels">
+          <Key>
+            <PropertyRef Name="EquipmentModelID" />
+          </Key>
+          <Property Name="EquipmentModelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EquipmentBrandID" Type="Int32" Nullable="false" />
+          <Property Name="EquipmentTypeID" Type="Int32" Nullable="false" />
+          <Property Name="ModelName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Course_project_0502_Equipment" Relationship="Self.FK_Course_project_0502_Equipment_Models" FromRole="Course_project_0502_EquipmentModels" ToRole="Course_project_0502_Equipment" />
+          <NavigationProperty Name="Course_project_0502_EquipmentBrands" Relationship="Self.FK_Course_project_0502_EquipmentModels_Brands" FromRole="Course_project_0502_EquipmentModels" ToRole="Course_project_0502_EquipmentBrands" />
+          <NavigationProperty Name="Course_project_0502_EquipmentTypes" Relationship="Self.FK_Course_project_0502_EquipmentModels_Types" FromRole="Course_project_0502_EquipmentModels" ToRole="Course_project_0502_EquipmentTypes" />
+        </EntityType>
+        <EntityType Name="Course_project_0502_EquipmentTypes">
+          <Key>
+            <PropertyRef Name="EquipmentTypeID" />
+          </Key>
+          <Property Name="EquipmentTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Course_project_0502_EquipmentModels" Relationship="Self.FK_Course_project_0502_EquipmentModels_Types" FromRole="Course_project_0502_EquipmentTypes" ToRole="Course_project_0502_EquipmentModels" />
+        </EntityType>
+        <EntityType Name="Course_project_0502_OrderAssignments">
+          <Key>
+            <PropertyRef Name="RepairOrderID" />
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="RepairOrderID" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="AssignedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="AssignmentNote" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Course_project_0502_Employees" Relationship="Self.FK_Course_project_0502_OrderAssignments_Employees" FromRole="Course_project_0502_OrderAssignments" ToRole="Course_project_0502_Employees" />
+          <NavigationProperty Name="Course_project_0502_RepairOrders" Relationship="Self.FK_Course_project_0502_OrderAssignments_Orders" FromRole="Course_project_0502_OrderAssignments" ToRole="Course_project_0502_RepairOrders" />
+        </EntityType>
+        <EntityType Name="Course_project_0502_OrderStatuses">
+          <Key>
+            <PropertyRef Name="OrderStatusID" />
+          </Key>
+          <Property Name="OrderStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsFinal" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Course_project_0502_RepairOrders" Relationship="Self.FK_Course_project_0502_RepairOrders_Statuses" FromRole="Course_project_0502_OrderStatuses" ToRole="Course_project_0502_RepairOrders" />
+          <NavigationProperty Name="Course_project_0502_RepairOrderStatusHistory" Relationship="Self.FK_Course_project_0502_StatusHistory_Statuses" FromRole="Course_project_0502_OrderStatuses" ToRole="Course_project_0502_RepairOrderStatusHistory" />
+        </EntityType>
+        <EntityType Name="Course_project_0502_OrderWorks">
+          <Key>
+            <PropertyRef Name="OrderWorkID" />
+          </Key>
+          <Property Name="OrderWorkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RepairOrderID" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="WorkName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WorkDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="WorkCost" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="DurationMinutes" Type="Int16" Nullable="false" />
+          <Property Name="CompletedAt" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Course_project_0502_Employees" Relationship="Self.FK_Course_project_0502_OrderWorks_Employees" FromRole="Course_project_0502_OrderWorks" ToRole="Course_project_0502_Employees" />
+          <NavigationProperty Name="Course_project_0502_RepairOrders" Relationship="Self.FK_Course_project_0502_OrderWorks_Orders" FromRole="Course_project_0502_OrderWorks" ToRole="Course_project_0502_RepairOrders" />
+        </EntityType>
+        <EntityType Name="Course_project_0502_RepairOrders">
+          <Key>
+            <PropertyRef Name="RepairOrderID" />
+          </Key>
+          <Property Name="RepairOrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EquipmentID" Type="Int32" Nullable="false" />
+          <Property Name="AcceptedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IssuedAt" Type="DateTime" Precision="0" />
+          <Property Name="FaultDescription" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RepairCost" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="OrderStatusID" Type="Int32" Nullable="false" />
+          <Property Name="IsCancelled" Type="Boolean" Nullable="false" />
+          <Property Name="CancellationNote" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Course_project_0502_Equipment" Relationship="Self.FK_Course_project_0502_RepairOrders_Equipment" FromRole="Course_project_0502_RepairOrders" ToRole="Course_project_0502_Equipment" />
+          <NavigationProperty Name="Course_project_0502_OrderAssignments" Relationship="Self.FK_Course_project_0502_OrderAssignments_Orders" FromRole="Course_project_0502_RepairOrders" ToRole="Course_project_0502_OrderAssignments" />
+          <NavigationProperty Name="Course_project_0502_OrderStatuses" Relationship="Self.FK_Course_project_0502_RepairOrders_Statuses" FromRole="Course_project_0502_RepairOrders" ToRole="Course_project_0502_OrderStatuses" />
+          <NavigationProperty Name="Course_project_0502_OrderWorks" Relationship="Self.FK_Course_project_0502_OrderWorks_Orders" FromRole="Course_project_0502_RepairOrders" ToRole="Course_project_0502_OrderWorks" />
+          <NavigationProperty Name="Course_project_0502_RepairOrderStatusHistory" Relationship="Self.FK_Course_project_0502_StatusHistory_Orders" FromRole="Course_project_0502_RepairOrders" ToRole="Course_project_0502_RepairOrderStatusHistory" />
+        </EntityType>
+        <EntityType Name="Course_project_0502_RepairOrderStatusHistory">
+          <Key>
+            <PropertyRef Name="StatusHistoryID" />
+          </Key>
+          <Property Name="StatusHistoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RepairOrderID" Type="Int32" Nullable="false" />
+          <Property Name="OrderStatusID" Type="Int32" Nullable="false" />
+          <Property Name="ChangedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ChangedByUserID" Type="Int32" />
+          <Property Name="ChangeNote" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Course_project_0502_OrderStatuses" Relationship="Self.FK_Course_project_0502_StatusHistory_Statuses" FromRole="Course_project_0502_RepairOrderStatusHistory" ToRole="Course_project_0502_OrderStatuses" />
+          <NavigationProperty Name="Course_project_0502_RepairOrders" Relationship="Self.FK_Course_project_0502_StatusHistory_Orders" FromRole="Course_project_0502_RepairOrderStatusHistory" ToRole="Course_project_0502_RepairOrders" />
+          <NavigationProperty Name="Course_project_0502_Users" Relationship="Self.FK_Course_project_0502_StatusHistory_Users" FromRole="Course_project_0502_RepairOrderStatusHistory" ToRole="Course_project_0502_Users" />
+        </EntityType>
+        <EntityType Name="Course_project_0502_Roles">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoleDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Course_project_0502_Users" Relationship="Self.Course_project_0502_UserRoles" FromRole="Course_project_0502_Roles" ToRole="Course_project_0502_Users" />
+        </EntityType>
+        <EntityType Name="Course_project_0502_Specializations">
+          <Key>
+            <PropertyRef Name="SpecializationID" />
+          </Key>
+          <Property Name="SpecializationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SpecializationName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Course_project_0502_Employees" Relationship="Self.Course_project_0502_EmployeeSpecializations" FromRole="Course_project_0502_Specializations" ToRole="Course_project_0502_Employees" />
+        </EntityType>
+        <EntityType Name="Course_project_0502_Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoginName" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AccountType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <Property Name="ClientID" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Course_project_0502_Clients" Relationship="Self.FK_Course_project_0502_Users_Clients" FromRole="Course_project_0502_Users" ToRole="Course_project_0502_Clients" />
+          <NavigationProperty Name="Course_project_0502_Employees" Relationship="Self.FK_Course_project_0502_Users_Employees" FromRole="Course_project_0502_Users" ToRole="Course_project_0502_Employees" />
+          <NavigationProperty Name="Course_project_0502_RepairOrderStatusHistory" Relationship="Self.FK_Course_project_0502_StatusHistory_Users" FromRole="Course_project_0502_Users" ToRole="Course_project_0502_RepairOrderStatusHistory" />
+          <NavigationProperty Name="Course_project_0502_Roles" Relationship="Self.Course_project_0502_UserRoles" FromRole="Course_project_0502_Users" ToRole="Course_project_0502_Roles" />
+        </EntityType>
+        <Association Name="FK_Course_project_0502_Equipment_Clients">
+          <End Role="Course_project_0502_Clients" Type="Self.Course_project_0502_Clients" Multiplicity="1" />
+          <End Role="Course_project_0502_Equipment" Type="Self.Course_project_0502_Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_project_0502_Clients">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="Course_project_0502_Equipment">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_project_0502_Users_Clients">
+          <End Role="Course_project_0502_Clients" Type="Self.Course_project_0502_Clients" Multiplicity="0..1" />
+          <End Role="Course_project_0502_Users" Type="Self.Course_project_0502_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_project_0502_Clients">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="Course_project_0502_Users">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_project_0502_OrderAssignments_Employees">
+          <End Role="Course_project_0502_Employees" Type="Self.Course_project_0502_Employees" Multiplicity="1" />
+          <End Role="Course_project_0502_OrderAssignments" Type="Self.Course_project_0502_OrderAssignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_project_0502_Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Course_project_0502_OrderAssignments">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_project_0502_OrderWorks_Employees">
+          <End Role="Course_project_0502_Employees" Type="Self.Course_project_0502_Employees" Multiplicity="1" />
+          <End Role="Course_project_0502_OrderWorks" Type="Self.Course_project_0502_OrderWorks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_project_0502_Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Course_project_0502_OrderWorks">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_project_0502_Users_Employees">
+          <End Role="Course_project_0502_Employees" Type="Self.Course_project_0502_Employees" Multiplicity="0..1" />
+          <End Role="Course_project_0502_Users" Type="Self.Course_project_0502_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_project_0502_Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Course_project_0502_Users">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_project_0502_Equipment_Models">
+          <End Role="Course_project_0502_EquipmentModels" Type="Self.Course_project_0502_EquipmentModels" Multiplicity="1" />
+          <End Role="Course_project_0502_Equipment" Type="Self.Course_project_0502_Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_project_0502_EquipmentModels">
+              <PropertyRef Name="EquipmentModelID" />
+            </Principal>
+            <Dependent Role="Course_project_0502_Equipment">
+              <PropertyRef Name="EquipmentModelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_project_0502_RepairOrders_Equipment">
+          <End Role="Course_project_0502_Equipment" Type="Self.Course_project_0502_Equipment" Multiplicity="1" />
+          <End Role="Course_project_0502_RepairOrders" Type="Self.Course_project_0502_RepairOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_project_0502_Equipment">
+              <PropertyRef Name="EquipmentID" />
+            </Principal>
+            <Dependent Role="Course_project_0502_RepairOrders">
+              <PropertyRef Name="EquipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_project_0502_EquipmentModels_Brands">
+          <End Role="Course_project_0502_EquipmentBrands" Type="Self.Course_project_0502_EquipmentBrands" Multiplicity="1" />
+          <End Role="Course_project_0502_EquipmentModels" Type="Self.Course_project_0502_EquipmentModels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_project_0502_EquipmentBrands">
+              <PropertyRef Name="EquipmentBrandID" />
+            </Principal>
+            <Dependent Role="Course_project_0502_EquipmentModels">
+              <PropertyRef Name="EquipmentBrandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_project_0502_EquipmentModels_Types">
+          <End Role="Course_project_0502_EquipmentTypes" Type="Self.Course_project_0502_EquipmentTypes" Multiplicity="1" />
+          <End Role="Course_project_0502_EquipmentModels" Type="Self.Course_project_0502_EquipmentModels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_project_0502_EquipmentTypes">
+              <PropertyRef Name="EquipmentTypeID" />
+            </Principal>
+            <Dependent Role="Course_project_0502_EquipmentModels">
+              <PropertyRef Name="EquipmentTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_project_0502_OrderAssignments_Orders">
+          <End Role="Course_project_0502_RepairOrders" Type="Self.Course_project_0502_RepairOrders" Multiplicity="1" />
+          <End Role="Course_project_0502_OrderAssignments" Type="Self.Course_project_0502_OrderAssignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_project_0502_RepairOrders">
+              <PropertyRef Name="RepairOrderID" />
+            </Principal>
+            <Dependent Role="Course_project_0502_OrderAssignments">
+              <PropertyRef Name="RepairOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_project_0502_RepairOrders_Statuses">
+          <End Role="Course_project_0502_OrderStatuses" Type="Self.Course_project_0502_OrderStatuses" Multiplicity="1" />
+          <End Role="Course_project_0502_RepairOrders" Type="Self.Course_project_0502_RepairOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_project_0502_OrderStatuses">
+              <PropertyRef Name="OrderStatusID" />
+            </Principal>
+            <Dependent Role="Course_project_0502_RepairOrders">
+              <PropertyRef Name="OrderStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_project_0502_StatusHistory_Statuses">
+          <End Role="Course_project_0502_OrderStatuses" Type="Self.Course_project_0502_OrderStatuses" Multiplicity="1" />
+          <End Role="Course_project_0502_RepairOrderStatusHistory" Type="Self.Course_project_0502_RepairOrderStatusHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_project_0502_OrderStatuses">
+              <PropertyRef Name="OrderStatusID" />
+            </Principal>
+            <Dependent Role="Course_project_0502_RepairOrderStatusHistory">
+              <PropertyRef Name="OrderStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_project_0502_OrderWorks_Orders">
+          <End Role="Course_project_0502_RepairOrders" Type="Self.Course_project_0502_RepairOrders" Multiplicity="1" />
+          <End Role="Course_project_0502_OrderWorks" Type="Self.Course_project_0502_OrderWorks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_project_0502_RepairOrders">
+              <PropertyRef Name="RepairOrderID" />
+            </Principal>
+            <Dependent Role="Course_project_0502_OrderWorks">
+              <PropertyRef Name="RepairOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_project_0502_StatusHistory_Orders">
+          <End Role="Course_project_0502_RepairOrders" Type="Self.Course_project_0502_RepairOrders" Multiplicity="1" />
+          <End Role="Course_project_0502_RepairOrderStatusHistory" Type="Self.Course_project_0502_RepairOrderStatusHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_project_0502_RepairOrders">
+              <PropertyRef Name="RepairOrderID" />
+            </Principal>
+            <Dependent Role="Course_project_0502_RepairOrderStatusHistory">
+              <PropertyRef Name="RepairOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_project_0502_StatusHistory_Users">
+          <End Role="Course_project_0502_Users" Type="Self.Course_project_0502_Users" Multiplicity="0..1" />
+          <End Role="Course_project_0502_RepairOrderStatusHistory" Type="Self.Course_project_0502_RepairOrderStatusHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course_project_0502_Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Course_project_0502_RepairOrderStatusHistory">
+              <PropertyRef Name="ChangedByUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Course_project_0502_EmployeeSpecializations">
+          <End Role="Course_project_0502_Employees" Type="Self.Course_project_0502_Employees" Multiplicity="*" />
+          <End Role="Course_project_0502_Specializations" Type="Self.Course_project_0502_Specializations" Multiplicity="*" />
+        </Association>
+        <Association Name="Course_project_0502_UserRoles">
+          <End Role="Course_project_0502_Roles" Type="Self.Course_project_0502_Roles" Multiplicity="*" />
+          <End Role="Course_project_0502_Users" Type="Self.Course_project_0502_Users" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="user24_dbEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Course_project_0502_Clients" EntityType="Self.Course_project_0502_Clients" />
+          <EntitySet Name="Course_project_0502_Employees" EntityType="Self.Course_project_0502_Employees" />
+          <EntitySet Name="Course_project_0502_Equipment" EntityType="Self.Course_project_0502_Equipment" />
+          <EntitySet Name="Course_project_0502_EquipmentBrands" EntityType="Self.Course_project_0502_EquipmentBrands" />
+          <EntitySet Name="Course_project_0502_EquipmentModels" EntityType="Self.Course_project_0502_EquipmentModels" />
+          <EntitySet Name="Course_project_0502_EquipmentTypes" EntityType="Self.Course_project_0502_EquipmentTypes" />
+          <EntitySet Name="Course_project_0502_OrderAssignments" EntityType="Self.Course_project_0502_OrderAssignments" />
+          <EntitySet Name="Course_project_0502_OrderStatuses" EntityType="Self.Course_project_0502_OrderStatuses" />
+          <EntitySet Name="Course_project_0502_OrderWorks" EntityType="Self.Course_project_0502_OrderWorks" />
+          <EntitySet Name="Course_project_0502_RepairOrders" EntityType="Self.Course_project_0502_RepairOrders" />
+          <EntitySet Name="Course_project_0502_RepairOrderStatusHistory" EntityType="Self.Course_project_0502_RepairOrderStatusHistory" />
+          <EntitySet Name="Course_project_0502_Roles" EntityType="Self.Course_project_0502_Roles" />
+          <EntitySet Name="Course_project_0502_Specializations" EntityType="Self.Course_project_0502_Specializations" />
+          <EntitySet Name="Course_project_0502_Users" EntityType="Self.Course_project_0502_Users" />
+          <AssociationSet Name="FK_Course_project_0502_Equipment_Clients" Association="Self.FK_Course_project_0502_Equipment_Clients">
+            <End Role="Course_project_0502_Clients" EntitySet="Course_project_0502_Clients" />
+            <End Role="Course_project_0502_Equipment" EntitySet="Course_project_0502_Equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_project_0502_Users_Clients" Association="Self.FK_Course_project_0502_Users_Clients">
+            <End Role="Course_project_0502_Clients" EntitySet="Course_project_0502_Clients" />
+            <End Role="Course_project_0502_Users" EntitySet="Course_project_0502_Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_project_0502_OrderAssignments_Employees" Association="Self.FK_Course_project_0502_OrderAssignments_Employees">
+            <End Role="Course_project_0502_Employees" EntitySet="Course_project_0502_Employees" />
+            <End Role="Course_project_0502_OrderAssignments" EntitySet="Course_project_0502_OrderAssignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_project_0502_OrderWorks_Employees" Association="Self.FK_Course_project_0502_OrderWorks_Employees">
+            <End Role="Course_project_0502_Employees" EntitySet="Course_project_0502_Employees" />
+            <End Role="Course_project_0502_OrderWorks" EntitySet="Course_project_0502_OrderWorks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_project_0502_Users_Employees" Association="Self.FK_Course_project_0502_Users_Employees">
+            <End Role="Course_project_0502_Employees" EntitySet="Course_project_0502_Employees" />
+            <End Role="Course_project_0502_Users" EntitySet="Course_project_0502_Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_project_0502_Equipment_Models" Association="Self.FK_Course_project_0502_Equipment_Models">
+            <End Role="Course_project_0502_EquipmentModels" EntitySet="Course_project_0502_EquipmentModels" />
+            <End Role="Course_project_0502_Equipment" EntitySet="Course_project_0502_Equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_project_0502_RepairOrders_Equipment" Association="Self.FK_Course_project_0502_RepairOrders_Equipment">
+            <End Role="Course_project_0502_Equipment" EntitySet="Course_project_0502_Equipment" />
+            <End Role="Course_project_0502_RepairOrders" EntitySet="Course_project_0502_RepairOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_project_0502_EquipmentModels_Brands" Association="Self.FK_Course_project_0502_EquipmentModels_Brands">
+            <End Role="Course_project_0502_EquipmentBrands" EntitySet="Course_project_0502_EquipmentBrands" />
+            <End Role="Course_project_0502_EquipmentModels" EntitySet="Course_project_0502_EquipmentModels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_project_0502_EquipmentModels_Types" Association="Self.FK_Course_project_0502_EquipmentModels_Types">
+            <End Role="Course_project_0502_EquipmentTypes" EntitySet="Course_project_0502_EquipmentTypes" />
+            <End Role="Course_project_0502_EquipmentModels" EntitySet="Course_project_0502_EquipmentModels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_project_0502_OrderAssignments_Orders" Association="Self.FK_Course_project_0502_OrderAssignments_Orders">
+            <End Role="Course_project_0502_RepairOrders" EntitySet="Course_project_0502_RepairOrders" />
+            <End Role="Course_project_0502_OrderAssignments" EntitySet="Course_project_0502_OrderAssignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_project_0502_RepairOrders_Statuses" Association="Self.FK_Course_project_0502_RepairOrders_Statuses">
+            <End Role="Course_project_0502_OrderStatuses" EntitySet="Course_project_0502_OrderStatuses" />
+            <End Role="Course_project_0502_RepairOrders" EntitySet="Course_project_0502_RepairOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_project_0502_StatusHistory_Statuses" Association="Self.FK_Course_project_0502_StatusHistory_Statuses">
+            <End Role="Course_project_0502_OrderStatuses" EntitySet="Course_project_0502_OrderStatuses" />
+            <End Role="Course_project_0502_RepairOrderStatusHistory" EntitySet="Course_project_0502_RepairOrderStatusHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_project_0502_OrderWorks_Orders" Association="Self.FK_Course_project_0502_OrderWorks_Orders">
+            <End Role="Course_project_0502_RepairOrders" EntitySet="Course_project_0502_RepairOrders" />
+            <End Role="Course_project_0502_OrderWorks" EntitySet="Course_project_0502_OrderWorks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_project_0502_StatusHistory_Orders" Association="Self.FK_Course_project_0502_StatusHistory_Orders">
+            <End Role="Course_project_0502_RepairOrders" EntitySet="Course_project_0502_RepairOrders" />
+            <End Role="Course_project_0502_RepairOrderStatusHistory" EntitySet="Course_project_0502_RepairOrderStatusHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_project_0502_StatusHistory_Users" Association="Self.FK_Course_project_0502_StatusHistory_Users">
+            <End Role="Course_project_0502_Users" EntitySet="Course_project_0502_Users" />
+            <End Role="Course_project_0502_RepairOrderStatusHistory" EntitySet="Course_project_0502_RepairOrderStatusHistory" />
+          </AssociationSet>
+          <AssociationSet Name="Course_project_0502_EmployeeSpecializations" Association="Self.Course_project_0502_EmployeeSpecializations">
+            <End Role="Course_project_0502_Employees" EntitySet="Course_project_0502_Employees" />
+            <End Role="Course_project_0502_Specializations" EntitySet="Course_project_0502_Specializations" />
+          </AssociationSet>
+          <AssociationSet Name="Course_project_0502_UserRoles" Association="Self.Course_project_0502_UserRoles">
+            <End Role="Course_project_0502_Roles" EntitySet="Course_project_0502_Roles" />
+            <End Role="Course_project_0502_Users" EntitySet="Course_project_0502_Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище user24_dbModelContainer" CdmEntityContainer="user24_dbEntities1">
+          <EntitySetMapping Name="Course_project_0502_Clients">
+            <EntityTypeMapping TypeName="user24_dbModel.Course_project_0502_Clients">
+              <MappingFragment StoreEntitySet="Course_project_0502_Clients">
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Course_project_0502_Employees">
+            <EntityTypeMapping TypeName="user24_dbModel.Course_project_0502_Employees">
+              <MappingFragment StoreEntitySet="Course_project_0502_Employees">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Course_project_0502_Equipment">
+            <EntityTypeMapping TypeName="user24_dbModel.Course_project_0502_Equipment">
+              <MappingFragment StoreEntitySet="Course_project_0502_Equipment">
+                <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="EquipmentModelID" ColumnName="EquipmentModelID" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Course_project_0502_EquipmentBrands">
+            <EntityTypeMapping TypeName="user24_dbModel.Course_project_0502_EquipmentBrands">
+              <MappingFragment StoreEntitySet="Course_project_0502_EquipmentBrands">
+                <ScalarProperty Name="EquipmentBrandID" ColumnName="EquipmentBrandID" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Course_project_0502_EquipmentModels">
+            <EntityTypeMapping TypeName="user24_dbModel.Course_project_0502_EquipmentModels">
+              <MappingFragment StoreEntitySet="Course_project_0502_EquipmentModels">
+                <ScalarProperty Name="EquipmentModelID" ColumnName="EquipmentModelID" />
+                <ScalarProperty Name="EquipmentBrandID" ColumnName="EquipmentBrandID" />
+                <ScalarProperty Name="EquipmentTypeID" ColumnName="EquipmentTypeID" />
+                <ScalarProperty Name="ModelName" ColumnName="ModelName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Course_project_0502_EquipmentTypes">
+            <EntityTypeMapping TypeName="user24_dbModel.Course_project_0502_EquipmentTypes">
+              <MappingFragment StoreEntitySet="Course_project_0502_EquipmentTypes">
+                <ScalarProperty Name="EquipmentTypeID" ColumnName="EquipmentTypeID" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Course_project_0502_OrderAssignments">
+            <EntityTypeMapping TypeName="user24_dbModel.Course_project_0502_OrderAssignments">
+              <MappingFragment StoreEntitySet="Course_project_0502_OrderAssignments">
+                <ScalarProperty Name="RepairOrderID" ColumnName="RepairOrderID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="AssignedAt" ColumnName="AssignedAt" />
+                <ScalarProperty Name="AssignmentNote" ColumnName="AssignmentNote" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Course_project_0502_OrderStatuses">
+            <EntityTypeMapping TypeName="user24_dbModel.Course_project_0502_OrderStatuses">
+              <MappingFragment StoreEntitySet="Course_project_0502_OrderStatuses">
+                <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="IsFinal" ColumnName="IsFinal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Course_project_0502_OrderWorks">
+            <EntityTypeMapping TypeName="user24_dbModel.Course_project_0502_OrderWorks">
+              <MappingFragment StoreEntitySet="Course_project_0502_OrderWorks">
+                <ScalarProperty Name="OrderWorkID" ColumnName="OrderWorkID" />
+                <ScalarProperty Name="RepairOrderID" ColumnName="RepairOrderID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="WorkName" ColumnName="WorkName" />
+                <ScalarProperty Name="WorkDescription" ColumnName="WorkDescription" />
+                <ScalarProperty Name="WorkCost" ColumnName="WorkCost" />
+                <ScalarProperty Name="DurationMinutes" ColumnName="DurationMinutes" />
+                <ScalarProperty Name="CompletedAt" ColumnName="CompletedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Course_project_0502_RepairOrders">
+            <EntityTypeMapping TypeName="user24_dbModel.Course_project_0502_RepairOrders">
+              <MappingFragment StoreEntitySet="Course_project_0502_RepairOrders">
+                <ScalarProperty Name="RepairOrderID" ColumnName="RepairOrderID" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
+                <ScalarProperty Name="AcceptedAt" ColumnName="AcceptedAt" />
+                <ScalarProperty Name="IssuedAt" ColumnName="IssuedAt" />
+                <ScalarProperty Name="FaultDescription" ColumnName="FaultDescription" />
+                <ScalarProperty Name="RepairCost" ColumnName="RepairCost" />
+                <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
+                <ScalarProperty Name="IsCancelled" ColumnName="IsCancelled" />
+                <ScalarProperty Name="CancellationNote" ColumnName="CancellationNote" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Course_project_0502_RepairOrderStatusHistory">
+            <EntityTypeMapping TypeName="user24_dbModel.Course_project_0502_RepairOrderStatusHistory">
+              <MappingFragment StoreEntitySet="Course_project_0502_RepairOrderStatusHistory">
+                <ScalarProperty Name="StatusHistoryID" ColumnName="StatusHistoryID" />
+                <ScalarProperty Name="RepairOrderID" ColumnName="RepairOrderID" />
+                <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
+                <ScalarProperty Name="ChangedAt" ColumnName="ChangedAt" />
+                <ScalarProperty Name="ChangedByUserID" ColumnName="ChangedByUserID" />
+                <ScalarProperty Name="ChangeNote" ColumnName="ChangeNote" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Course_project_0502_Roles">
+            <EntityTypeMapping TypeName="user24_dbModel.Course_project_0502_Roles">
+              <MappingFragment StoreEntitySet="Course_project_0502_Roles">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleDescription" ColumnName="RoleDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Course_project_0502_Specializations">
+            <EntityTypeMapping TypeName="user24_dbModel.Course_project_0502_Specializations">
+              <MappingFragment StoreEntitySet="Course_project_0502_Specializations">
+                <ScalarProperty Name="SpecializationID" ColumnName="SpecializationID" />
+                <ScalarProperty Name="SpecializationName" ColumnName="SpecializationName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Course_project_0502_Users">
+            <EntityTypeMapping TypeName="user24_dbModel.Course_project_0502_Users">
+              <MappingFragment StoreEntitySet="Course_project_0502_Users">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Course_project_0502_EmployeeSpecializations" TypeName="user24_dbModel.Course_project_0502_EmployeeSpecializations" StoreEntitySet="Course_project_0502_EmployeeSpecializations">
+            <EndProperty Name="Course_project_0502_Employees">
+              <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+            </EndProperty>
+            <EndProperty Name="Course_project_0502_Specializations">
+              <ScalarProperty Name="SpecializationID" ColumnName="SpecializationID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Course_project_0502_UserRoles" TypeName="user24_dbModel.Course_project_0502_UserRoles" StoreEntitySet="Course_project_0502_UserRoles">
+            <EndProperty Name="Course_project_0502_Roles">
+              <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+            </EndProperty>
+            <EndProperty Name="Course_project_0502_Users">
+              <ScalarProperty Name="UserID" ColumnName="UserID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
