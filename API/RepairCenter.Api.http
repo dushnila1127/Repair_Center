@@ -1,0 +1,45 @@
+@baseUrl = https://localhost:7003
+
+GET {{baseUrl}}/api/orders
+Accept: application/json
+
+###
+GET {{baseUrl}}/api/lookups/order-statuses
+Accept: application/json
+
+###
+GET {{baseUrl}}/api/clients
+Accept: application/json
+
+###
+GET {{baseUrl}}/api/equipment
+Accept: application/json
+
+###
+GET {{baseUrl}}/api/employees
+Accept: application/json
+
+###
+GET {{baseUrl}}/api/reports/completed-orders?fromDate=2026-10-01&toDate=2026-10-31
+Accept: application/json
+
+###
+GET {{baseUrl}}/api/orders/1/status
+Accept: application/json
+
+###
+GET {{baseUrl}}/api/orders/1/history
+Accept: application/json
+
+###
+POST {{baseUrl}}/api/orders
+Content-Type: application/json
+
+{
+  "equipmentID": 1,
+  "acceptedAt": "2026-10-21",
+  "faultDescription": "Проверка API RepairCenter",
+  "repairCost": 1500.00,
+  "orderStatusID": 1,
+  "employeeID": 1
+}
